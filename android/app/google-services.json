@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "137255433970",
+    "project_id": "fluttabd",
+    "storage_bucket": "fluttabd.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:137255433970:android:1ff381f1f617660e9b826b",
+        "android_client_info": {
+          "package_name": "com.example.fluttabd"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0wIj0-dnSTjT9IGR9lcTclSRDgBgdOQM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

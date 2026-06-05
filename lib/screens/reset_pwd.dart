@@ -1,15 +1,15 @@
-import 'package:fluttabd/screens/home_page.dart';
 import 'package:fluttabd/screens/otp_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-class ForgotPwd extends StatefulWidget {
-  const ForgotPwd({super.key});
+class ResetPwd extends StatefulWidget {
+  const ResetPwd({super.key});
 
   @override
-  State<ForgotPwd> createState() => _ForgotPwdState();
+  State<ResetPwd> createState() => _ResetPwdState();
 }
 
-class _ForgotPwdState extends State<ForgotPwd> {
+class _ResetPwdState extends State<ResetPwd> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,80 +18,81 @@ class _ForgotPwdState extends State<ForgotPwd> {
           onPressed: (){
             Navigator.pop(
               context,
-              MaterialPageRoute(builder: (context) => HomePage())
+              MaterialPageRoute(
+                builder: (context) => OtpPage(),
+                )
               );
           }, 
           icon: Icon(Icons.arrow_back_ios)),
       ),
-
+      drawerScrimColor: Color(23),
       body: SafeArea(
-        child:SingleChildScrollView(
+        child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16.0),
             child: Column(
-              //mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Align(
                   alignment: Alignment.center,
                   child: Image.asset(
-                    "assets/amico.png",
+                    "assets/pana@2x.png",
                     width: 300,
+                    height: 200,
                   ),
                 ),
-                SizedBox(height: 25,),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    "Forgot Password ?",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 21,
-                      fontWeight: FontWeight.bold,
-                      wordSpacing: 1,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 17),
+                SizedBox(height: 100,),
                 Align(
                   alignment: Alignment.bottomLeft,
                   child: Text(
-                    "Don’t worry! It happens. Please enter the email address associated with your account.",
+                    "Reset Password",
                     style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 14,
+                      color: Colors.black,
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      wordSpacing: 1.5,
                     ),
                   ),
                 ),
-                SizedBox(height: 42),
+                SizedBox(height: 40,),
                 TextField(
                   decoration: InputDecoration(
-                    labelText: "Email/Mobile Number",
+                    labelText: "New Password",
                     labelStyle: TextStyle(
                       color: Colors.grey,
                     ),
-                    prefixIcon: Icon(Icons.sync),
+                    prefixIcon: Icon(Icons.lock),
+                    suffixIcon: Icon(Icons.visibility),
                     border: UnderlineInputBorder(
                       borderSide: BorderSide(
                         color: Colors.grey,
                       )
                     )
                   ),
-                  //keyboardType: TextInputType,
+                  keyboardType: TextInputType.visiblePassword,
                 ),
-                SizedBox(height: 158,),
+                SizedBox(height: 20,),
+                TextField(
+                  decoration: InputDecoration(
+                    labelText: "Confirm New Password",
+                    labelStyle: TextStyle(
+                      color: Colors.grey,
+                    ),
+                    prefixIcon: Icon(Icons.lock),
+                    suffixIcon: Icon(Icons.visibility),
+                    border: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.grey,
+                      )
+                    )
+                  ),
+                ),
+                SizedBox(height: 83,),
                 SizedBox(
                   width: double.infinity,
-                  height: 47,
+                  height: 50,
                   child: ElevatedButton(
-                    onPressed: (){
-                      Navigator.push(
-                        context, 
-                        MaterialPageRoute(
-                          builder: (context) => OtpPage()
-                          )
-                        );
-                    },
+                    onPressed: (){},
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
@@ -99,20 +100,19 @@ class _ForgotPwdState extends State<ForgotPwd> {
                       backgroundColor: Colors.black,
                     ),
                     child: Text(
-                      "Submit",
+                      "Reset Password",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 18,
+                        wordSpacing: 2,
                       ),
-                    ),
-                    ),
-                ),
-                
-
+                    )),
+                )
               ],
             ),
-            ),
-        ) ),
+          ),
+        )
+        ),
     );
   }
 }

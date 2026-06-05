@@ -1,6 +1,7 @@
 import 'package:fluttabd/screens/forgot_pwd.dart';
 import 'package:fluttabd/screens/login_page.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -10,6 +11,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  final emailcontroller = TextEditingController();
+  final passwordcontroller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -51,6 +56,7 @@ class _HomePageState extends State<HomePage> {
             ),
             SizedBox(height: 13,),
             TextField(
+              controller: emailcontroller,
               decoration: InputDecoration(
                 labelText: "Email",
                 prefixIcon: Icon(Icons.email_outlined),
@@ -62,6 +68,7 @@ class _HomePageState extends State<HomePage> {
             ),
             SizedBox(height: 16,),
             TextField(
+              controller: passwordcontroller,
               decoration: InputDecoration(
                 labelText: "Password",
                 prefixIcon: Icon(Icons.password_outlined),
@@ -94,7 +101,22 @@ class _HomePageState extends State<HomePage> {
               width: double.infinity,
               height: 53,
               child: ElevatedButton(
-                onPressed: (){}, 
+                onPressed: () async {
+                  String email = emailcontroller.text.trim();
+                  String password = passwordcontroller.text;
+
+                  try{
+                    await FirebaseAuth.instance
+                         .createUserWithEmailAndPassword(
+                            email:email,
+                            password:password,
+                          );
+                          print("User created");
+                  } catch(e){
+                    print(e);
+                  }
+
+                }, 
                 style:ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),

@@ -1,4 +1,5 @@
 import 'package:fluttabd/screens/forgot_pwd.dart';
+import 'package:fluttabd/screens/reset_pwd.dart';
 import 'package:flutter/material.dart';
 
 class OtpPage extends StatefulWidget {
@@ -75,12 +76,19 @@ class _OtpPageState extends State<OtpPage> {
                     ],
                   ),
                 ),
-                SizedBox(height: 35,),
+                SizedBox(height: 75,),
                 SizedBox(
                   width: double.infinity,
                   height: 47,
                   child: ElevatedButton(
-                    onPressed: (){},
+                    onPressed: (){
+                      Navigator.push(
+                        context, 
+                        MaterialPageRoute(
+                          builder: (context) => ResetPwd(),
+                          )
+                        );
+                    },
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
@@ -94,7 +102,38 @@ class _OtpPageState extends State<OtpPage> {
                         fontSize: 18,
                       ),
                     )),
+                ),
+                SizedBox(height: 5,),
+                Stack(
+                  children: [
+                Align(
+                  alignment: Alignment.bottomLeft,
+                  child: TextButton(
+                    onPressed: (){},
+                    child: Text(
+                      "Resend Code",
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 16,
+                        wordSpacing: 1,
+                      ),
+                    ))
+                ),
+                Align(
+                  alignment: Alignment.bottomRight,
+                  child: TextButton(
+                    onPressed: (){},
+                    child: Text(
+                      '1:20 min left',
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 16,
+                        wordSpacing: 1,
+                      ),
+                    )),
                 )
+                ]
+                ),
               ],
             ),
             ),
